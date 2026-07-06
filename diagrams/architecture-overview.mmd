@@ -1,0 +1,62 @@
+flowchart TB
+    subgraph GameLayer["Game Layer: Assets/Scripts"]
+        Run["RunSystem\n对局状态机"]
+        Mission["MissionSystem\n任务系统"]
+        PCG["PCG\n确定性地图生成"]
+        Inventory["InventorySystem\n背包与品质道具"]
+        Archive["ArchiveSystem\n结算与存档"]
+        PlayerControl["PlayerControl\n输入与控制"]
+        DataTools["SO / Excel / Tools\n数据工具链"]
+    end
+
+    subgraph FrameworkLayer["Framework Layer: Assets/Framework"]
+        EventCenter["EventCenter\n事件中心"]
+
+        subgraph LogicLayer["LogicLayer"]
+            Attribute["AttributeModule"]
+            Combat["CombatModule"]
+            Damage["DamageCenter"]
+            Skill["SkillSystem"]
+            Buff["BuffSystem"]
+            AI["AIModule"]
+        end
+
+        subgraph NetworkLayer["NetworkLayer"]
+            Proxy["NetworkProxy"]
+            ServerAuthority["ServerAuthority"]
+            NetworkManager["NetworkObjectManager"]
+            NetworkPool["NetworkObjectPool"]
+        end
+
+        Render["RenderLayer\nDamageText / RenderActor"]
+        UI["UI Framework"]
+        Infra["Resource / Pool / Singleton / Json"]
+    end
+
+    Run --> Mission
+    Run --> PCG
+    Run --> Archive
+    Mission --> PCG
+    PCG --> AI
+    Inventory --> Buff
+    Inventory --> Skill
+    DataTools --> PCG
+    DataTools --> Mission
+    DataTools --> Skill
+    PlayerControl --> Proxy
+
+    Proxy --> ServerAuthority
+    ServerAuthority --> Combat
+    ServerAuthority --> Attribute
+    ServerAuthority --> Skill
+    ServerAuthority --> Buff
+    Combat --> Damage
+    Damage --> Attribute
+
+    Run --> EventCenter
+    Mission --> EventCenter
+    Attribute --> EventCenter
+    Combat --> EventCenter
+    EventCenter --> Render
+    EventCenter --> UI
+

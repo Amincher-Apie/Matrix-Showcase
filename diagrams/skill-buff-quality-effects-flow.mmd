@@ -1,0 +1,27 @@
+flowchart LR
+    SkillInput["Skill input"]
+    SkillServer["ServerSkillModule\nValidate cost and target"]
+    Registry["SkillExecuteRegistry"]
+    Executor["ISkillExecute\nSkill executor"]
+    BuffSystem["BuffSystem\nBuffData / BuffHandler"]
+    Inventory["Inventory / QualityItemSO"]
+    Trigger["Trigger\nWhen to check"]
+    Condition["Condition\nWhether to execute"]
+    Action["Action\nWhat to do"]
+    Attribute["Attribute / Combat / Damage"]
+    Event["EventCenter"]
+
+    SkillInput --> SkillServer
+    SkillServer --> Registry
+    Registry --> Executor
+    Executor --> BuffSystem
+    Executor --> Attribute
+
+    Inventory --> Trigger
+    Trigger --> Condition
+    Condition --> Action
+    Action --> BuffSystem
+    Action --> Attribute
+    BuffSystem --> Event
+    Attribute --> Event
+

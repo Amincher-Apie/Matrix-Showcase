@@ -1,0 +1,34 @@
+flowchart LR
+    Excel["Excel / Designer data"]
+    ExcelTool["ExcelToSO Tooling"]
+    SOAssets["ScriptableObject Assets\nnot included in showcase"]
+    SOManager["SOManager\nRuntime lookup"]
+
+    Hero["HeroSO"]
+    SkillDef["SkillDefinitionSO"]
+    MissionConfig["MissionConfig"]
+    PCGProfile["PcgGenerationProfile"]
+    ItemSO["WeaponSO / QualityItemSO"]
+
+    Player["PlayerSpawnManager / PlayerActor"]
+    Skill["SkillSystem"]
+    Mission["MissionSystem"]
+    PCG["PCG Generator"]
+    Inventory["Inventory / QualityEffects"]
+
+    Excel --> ExcelTool
+    ExcelTool --> SOAssets
+    SOAssets --> SOManager
+
+    SOManager --> Hero
+    SOManager --> SkillDef
+    SOManager --> MissionConfig
+    SOManager --> PCGProfile
+    SOManager --> ItemSO
+
+    Hero --> Player
+    SkillDef --> Skill
+    MissionConfig --> Mission
+    PCGProfile --> PCG
+    ItemSO --> Inventory
+

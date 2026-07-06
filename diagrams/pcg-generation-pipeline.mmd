@@ -1,0 +1,23 @@
+flowchart LR
+    Package["PcgGeneratePackage\nSeed + StyleKey + TaskInput"]
+    Profile["PcgGenerationProfile\nRoom pools and style options"]
+    Request["MapGenerationRequest"]
+    Graph["RoomGraphBuilder\nBuild topology"]
+    Role["RoomRoleAllocator\nAssign room roles"]
+    Instantiate["Instantiate Rooms\nSelect prefab by role and degree"]
+    Stitch["RoomStitcher\nPhysical alignment"]
+    Points["Collect Spawn Points\nBoss / Defense / Resource"]
+    Result["PcgMapGenerationResult\nRooms + Connections + Task bindings"]
+    Failure["PcgGenerationFailureReporter\nDiagnostics"]
+
+    Package --> Profile
+    Profile --> Request
+    Request --> Graph
+    Graph --> Role
+    Role --> Instantiate
+    Instantiate --> Stitch
+    Stitch --> Points
+    Points --> Result
+    Stitch -. failure .-> Failure
+    Graph -. retry with derived seed .-> Graph
+

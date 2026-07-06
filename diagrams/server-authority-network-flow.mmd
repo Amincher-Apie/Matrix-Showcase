@@ -1,0 +1,19 @@
+sequenceDiagram
+    participant Client as Client Input
+    participant Proxy as PlayerNetworkProxy
+    participant Server as ServerAuthority Module
+    participant Logic as LogicLayer
+    participant NetState as NetworkVariable / NetworkList
+    participant Event as EventCenter
+    participant View as UI / RenderLayer
+
+    Client->>Proxy: Fire / CastSkill / Interact
+    Proxy->>Server: ServerRpc request
+    Server->>Server: Validate sender and ownership
+    Server->>Logic: Execute authoritative logic
+    Logic-->>Server: Result
+    Server->>NetState: Update replicated state
+    Server->>Event: Trigger authoritative event
+    NetState-->>Client: Replicate state
+    Event->>View: Refresh HUD / VFX / DamageText
+

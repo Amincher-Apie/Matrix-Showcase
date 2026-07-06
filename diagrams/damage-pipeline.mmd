@@ -1,0 +1,26 @@
+flowchart TB
+    Input["Client fire / skill intent"]
+    Proxy["PlayerNetworkProxy\nServerRpc"]
+    Combat["ServerCombatModule\nValidate fire request"]
+    FireMethod["HitScan / Projectile\nResolve hit"]
+    DamageInfo["DamageInfo"]
+    Calculator["DamageCalculator\nApply formula"]
+    Attribute["ServerAttributeModule\nShield / Health / Death"]
+    Buff["BuffHandler\nBefore / After hit callbacks"]
+    Quality["QualityEffects\nOnHit / OnKill / OnDamage"]
+    Event["EventCenter\nUnitDamaged / UnitDied"]
+    Render["DamageText / VFX / HUD"]
+    Mission["MissionSystem\nMission progress"]
+
+    Input --> Proxy
+    Proxy --> Combat
+    Combat --> FireMethod
+    FireMethod --> DamageInfo
+    DamageInfo --> Buff
+    Buff --> Calculator
+    Calculator --> Attribute
+    Attribute --> Quality
+    Attribute --> Event
+    Event --> Render
+    Event --> Mission
+

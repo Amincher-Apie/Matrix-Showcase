@@ -1,0 +1,26 @@
+flowchart TB
+    Enemy["EnemyActor"]
+    AIModule["EnemyAIModule"]
+    Perception["PerceptionSystem\nFind target"]
+    StateMachine["AIStateMachine\nIdle / Patrol / Chase / Attack"]
+    Scheduler["AIScheduler\nSimulation level"]
+    Interest["InterestRegionManager\nCombat hotspots"]
+    Nav["EnemyNavAgentController\nNavMeshAgent wrapper"]
+    Steering["SteeringSystem\nAvoidance"]
+    Boids["BoidsCentralController\nGroup movement"]
+    Combat["EnemyCombatModule\nTryFire"]
+    PCGNav["PCGMapTopologyService\nRoom topology path"]
+
+    Enemy --> AIModule
+    AIModule --> Perception
+    Perception --> StateMachine
+    Scheduler --> AIModule
+    Interest --> Scheduler
+    StateMachine --> Nav
+    StateMachine --> Combat
+    Nav --> Steering
+    Steering --> Boids
+    PCGNav --> Nav
+
+    Scheduler -. Full / Reduced / Dormant .-> Nav
+

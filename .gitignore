@@ -1,0 +1,68 @@
+﻿# Unity generated
+Library/
+Temp/
+Logs/
+obj/
+UserSettings/
+UIElementsSchema/
+
+# IDE
+.vs/
+.idea/
+.vscode/
+*.csproj
+*.sln
+*.sln.DotSettings.user
+*.csproj.lscache
+
+# Local tools / VCS metadata
+.plastic/
+.claude/
+
+# Build outputs
+Build/
+Builds/
+*.apk
+*.aab
+*.exe
+*.app
+
+# Third-party and large asset folders from original project
+Assets/ThirdParty/
+Assets/Plugins/
+Assets/Behavior Designer/
+Assets/AmplifyShaderEditor/
+Assets/Bullet_Impact_FX/
+Assets/Resources/Modules/
+Assets/EnemyModel/
+Assets/TirgamesAssets/
+Assets/PolygonDungeon/
+Assets/TextMesh Pro/
+
+# Binary art/audio/video assets
+*.fbx
+*.obj
+*.blend
+*.png
+*.jpg
+*.jpeg
+*.tga
+*.tif
+*.psd
+*.wav
+*.mp3
+*.ogg
+*.mp4
+*.mov
+*.dll
+*.pdf
+
+# Unity binary assets not included in this showcase by default
+*.unity
+*.prefab
+*.asset
+*.mat
+*.controller
+*.anim
+*.shader
+*.shadergraph
