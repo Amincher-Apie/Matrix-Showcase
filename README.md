@@ -137,5 +137,4 @@ Matrix-Showcase/
 - 快速了解项目：[`docs/ai-readable-project-brief.md`](docs/ai-readable-project-brief.md)
 - 看系统架构：[`docs/architecture.md`](docs/architecture.md)
 - 看模块拆分：[`docs/module_overview.md`](docs/module_overview.md)
-- 准备面试讲解：[`docs/interview_notes.md`](docs/interview_notes.md)
 - 了解公开边界：[`docs/risk_and_limitations.md`](docs/risk_and_limitations.md)
